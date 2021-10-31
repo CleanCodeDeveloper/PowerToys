@@ -88,6 +88,7 @@ namespace Microsoft.PowerToys.Settings.UI.Library.ViewModels
             _makeDraggedWindowTransparent = Settings.Properties.FancyzonesMakeDraggedWindowTransparent.Value;
             _highlightOpacity = Settings.Properties.FancyzonesHighlightOpacity.Value;
             _excludedApps = Settings.Properties.FancyzonesExcludedApps.Value;
+            _customColors = Settings.Properties.FancyzonesCustomColors.Value;
             EditorHotkey = Settings.Properties.FancyzonesEditorHotkey.Value;
 
             // set the callback functions value to hangle outgoing IPC message.
@@ -123,6 +124,7 @@ namespace Microsoft.PowerToys.Settings.UI.Library.ViewModels
         private bool _useCursorPosEditorStartupScreen;
         private bool _showOnAllMonitors;
         private bool _makeDraggedWindowTransparent;
+        private bool _customColors;
 
         private int _highlightOpacity;
         private string _excludedApps;
@@ -500,6 +502,24 @@ namespace Microsoft.PowerToys.Settings.UI.Library.ViewModels
                 {
                     _makeDraggedWindowTransparent = value;
                     Settings.Properties.FancyzonesMakeDraggedWindowTransparent.Value = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public bool CustomColors
+        {
+            get
+            {
+                return _customColors;
+            }
+
+            set
+            {
+                if (value != _customColors)
+                {
+                    _customColors = value;
+                    Settings.Properties.FancyzonesCustomColors.Value = value;
                     NotifyPropertyChanged();
                 }
             }
