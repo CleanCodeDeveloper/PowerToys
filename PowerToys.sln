@@ -408,6 +408,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.PowerToys.Run.Plu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Plugin.WindowWalker.UnitTests", "src\modules\launcher\Plugins\Microsoft.Plugin.WindowWalker.UnitTests\Microsoft.Plugin.WindowWalker.UnitTests.csproj", "{8FE5A5EE-1B59-401C-9FB3-B04ECD3E29C1}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImageResizer.Logic", "src\modules\imageresizer\logic\ImageResizer.Logic.csproj", "{9BB57363-ED79-4258-B8B3-62930D6A2961}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImageResizer.WinUI", "src\modules\imageresizer\win-ui\ImageResizer.WinUI.csproj", "{6D30904F-BBB3-4B7F-81D3-F6E8C37C8270}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|ARM64 = Debug|ARM64
@@ -1583,6 +1587,28 @@ Global
 		{8FE5A5EE-1B59-401C-9FB3-B04ECD3E29C1}.Release|x64.Build.0 = Release|x64
 		{8FE5A5EE-1B59-401C-9FB3-B04ECD3E29C1}.Release|x86.ActiveCfg = Release|x64
 		{8FE5A5EE-1B59-401C-9FB3-B04ECD3E29C1}.Release|x86.Build.0 = Release|x64
+		{9BB57363-ED79-4258-B8B3-62930D6A2961}.Debug|arm64.ActiveCfg = Debug|x64
+		{9BB57363-ED79-4258-B8B3-62930D6A2961}.Debug|arm64.Build.0 = Debug|x64
+		{9BB57363-ED79-4258-B8B3-62930D6A2961}.Debug|x64.ActiveCfg = Debug|x64
+		{9BB57363-ED79-4258-B8B3-62930D6A2961}.Debug|x64.Build.0 = Debug|x64
+		{9BB57363-ED79-4258-B8B3-62930D6A2961}.Debug|x86.ActiveCfg = Debug|x64
+		{9BB57363-ED79-4258-B8B3-62930D6A2961}.Debug|x86.Build.0 = Debug|x64
+		{9BB57363-ED79-4258-B8B3-62930D6A2961}.Release|x64.ActiveCfg = Release|x64
+		{9BB57363-ED79-4258-B8B3-62930D6A2961}.Release|x64.Build.0 = Release|x64
+		{9BB57363-ED79-4258-B8B3-62930D6A2961}.Release|x86.ActiveCfg = Release|x64
+		{9BB57363-ED79-4258-B8B3-62930D6A2961}.Release|x86.Build.0 = Release|x64
+		{6D30904F-BBB3-4B7F-81D3-F6E8C37C8270}.Debug|x64.ActiveCfg = Debug|x64
+		{6D30904F-BBB3-4B7F-81D3-F6E8C37C8270}.Debug|x64.Build.0 = Debug|x64
+		{6D30904F-BBB3-4B7F-81D3-F6E8C37C8270}.Debug|x64.Deploy.0 = Debug|x64
+		{6D30904F-BBB3-4B7F-81D3-F6E8C37C8270}.Debug|x86.ActiveCfg = Debug|x86
+		{6D30904F-BBB3-4B7F-81D3-F6E8C37C8270}.Debug|x86.Build.0 = Debug|x86
+		{6D30904F-BBB3-4B7F-81D3-F6E8C37C8270}.Debug|x86.Deploy.0 = Debug|x86
+		{6D30904F-BBB3-4B7F-81D3-F6E8C37C8270}.Release|x64.ActiveCfg = Release|x64
+		{6D30904F-BBB3-4B7F-81D3-F6E8C37C8270}.Release|x64.Build.0 = Release|x64
+		{6D30904F-BBB3-4B7F-81D3-F6E8C37C8270}.Release|x64.Deploy.0 = Release|x64
+		{6D30904F-BBB3-4B7F-81D3-F6E8C37C8270}.Release|x86.ActiveCfg = Release|x86
+		{6D30904F-BBB3-4B7F-81D3-F6E8C37C8270}.Release|x86.Build.0 = Release|x86
+		{6D30904F-BBB3-4B7F-81D3-F6E8C37C8270}.Release|x86.Deploy.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1718,6 +1744,8 @@ Global
 		{5BDBD6C9-A31F-4CEB-871A-5E9E709197EF} = {4AFC9975-2456-4C70-94A4-84073C1CED93}
 		{FD464B4C-2F68-4D06-91E7-4208146C41F5} = {4AFC9975-2456-4C70-94A4-84073C1CED93}
 		{8FE5A5EE-1B59-401C-9FB3-B04ECD3E29C1} = {4AFC9975-2456-4C70-94A4-84073C1CED93}
+		{9BB57363-ED79-4258-B8B3-62930D6A2961} = {6C7F47CC-2151-44A3-A546-41C70025132C}
+		{6D30904F-BBB3-4B7F-81D3-F6E8C37C8270} = {6C7F47CC-2151-44A3-A546-41C70025132C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C3A2F9D1-7930-4EF4-A6FC-7EE0A99821D0}
