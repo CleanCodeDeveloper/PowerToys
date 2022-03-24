@@ -4,28 +4,28 @@
 
 using System;
 using System.Globalization;
-using ImageResizer.Logic.Models;
+//using ImageResizer.Logic.Models;
 using ImageResizer.WinUI.Properties;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Data;
 
 namespace ImageResizer.WinUI.Converters
 {
-    internal class ResizeUnitConverter : IValueConverter
-    {
-        public object Convert(object value, Type targetType, object parameter, string language)
-        {
-            var output = Resources.ResourceManager.GetString(Enum.GetName(typeof(ResizeUnit), value), CultureInfo.CurrentUICulture);
+    //internal class ResizeUnitConverter : IValueConverter
+    //{
+    //    public object Convert(object value, Type targetType, object parameter, string language)
+    //    {
+    //        var output = Resources.ResourceManager.GetString(Enum.GetName(typeof(ResizeUnit), value), CultureInfo.CurrentUICulture);
 
-            if ((string)parameter == "ToLower")
-            {
-                output = output.ToLower(CultureInfo.CurrentCulture);
-            }
+    //        if ((string)parameter == "ToLower")
+    //        {
+    //            output = output.ToLower(CultureInfo.CurrentCulture);
+    //        }
 
-            return output;
-        }
+    //        return output;
+    //    }
 
-        public object ConvertBack(object value, Type targetType, object parameter, string language)
-            => throw new NotImplementedException();
-    }
+    //    public object ConvertBack(object value, Type targetType, object parameter, string language)
+    //        => throw new NotImplementedException();
+    //}
 }

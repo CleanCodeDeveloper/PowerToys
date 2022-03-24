@@ -10,14 +10,14 @@ using Microsoft.UI.Xaml.Data;
 
 namespace ImageResizer.WinUI.Converters
 {
-    internal class TiffCompressOptionConverter : IValueConverter
-    {
-        public object Convert(object value, Type targetType, object parameter, string language)
-            => Resources.ResourceManager.GetString(
-                "TiffCompressOption_" + Enum.GetName(typeof(TiffCompressOption), value),
-                CultureInfo.CurrentUICulture);
+    //internal class TiffCompressOptionConverter : IValueConverter
+    //{
+    //    public object Convert(object value, Type targetType, object parameter, string language)
+    //        => Resources.ResourceManager.GetString(
+    //            "TiffCompressOption_" + Enum.GetName(typeof(TiffCompressOption), value),
+    //            CultureInfo.CurrentUICulture);
 
-        public object ConvertBack(object value, Type targetType, object parameter, string language)
-            => throw new NotImplementedException();
-    }
+    //    public object ConvertBack(object value, Type targetType, object parameter, string language)
+    //        => throw new NotImplementedException();
+    //}
 }
