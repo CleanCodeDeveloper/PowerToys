@@ -1,0 +1,168 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Controls.Primitives;
+using Microsoft.UI.Xaml.Data;
+using Microsoft.UI.Xaml.Input;
+using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Navigation;
+using Windows.Foundation;
+using Windows.Foundation.Collections;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Data;
+
+// To learn more about WinUI, the WinUI project structure,
+// and more about our project templates, see: http://aka.ms/winui-project-info.
+
+namespace ImageResizer.WinUI
+{
+    /// <summary>
+    /// An empty window that can be used on its own or navigated to within a Frame.
+    /// </summary>
+    public sealed partial class MainWindow : Window
+    {
+        public ObservableCollection<Photo> SelectedPhotos { get; set; }
+        public ObservableCollection<ImageOption> ImageOptions { get; set; }
+
+        public MainWindow()
+        {
+            this.InitializeComponent();
+
+            SelectedPhotos = new ObservableCollection<Photo>
+            {
+                new Photo() { FileName = "Surface 1.jpg", Dimensions = "720 x 480", OldDimensions = "980 x 780", Size = "401 kb", OldSize = "600 kb", Path = "ms-appx:///Assets/Images/Surface 1.jpg" },
+                new Photo() { FileName = "Surface 2.jpg", Dimensions = "720 x 460", OldDimensions = "960 x 740", Size = "421 kb", OldSize = "679 kb", Path = "ms-appx:///Assets/Images/Surface 2.jpg" },
+                new Photo() { FileName = "Surface 3.jpg", Dimensions = "720 x 480", OldDimensions = "900 x 740", Size = "367 kb", OldSize = "701 kb", Path = "ms-appx:///Assets/Images/Surface 3.jpg" },
+                new Photo() { FileName = "Surface 4.jpg", Dimensions = "720 x 470", OldDimensions = "900 x 700", Size = "370 kb", OldSize = "560 kb", Path = "ms-appx:///Assets/Images/Surface 4.jpg" },
+                new Photo() { FileName = "Surface 5.jpg", Dimensions = "719 x 480", OldDimensions = "940 x 780", Size = "360 kb", OldSize = "690 kb", Path = "ms-appx:///Assets/Images/Surface 5.jpg" },
+                new Photo() { FileName = "Surface 6.jpg", Dimensions = "717 x 480", OldDimensions = "980 x 770", Size = "420 kb", OldSize = "622 kb", Path = "ms-appx:///Assets/Images/Surface 6.jpg" },
+                new Photo() { FileName = "Surface 7.jpg", Dimensions = "720 x 480", OldDimensions = "890 x 770", Size = "390 kb", OldSize = "640 kb", Path = "ms-appx:///Assets/Images/Surface 7.jpg" }
+            };
+
+            ImageOptions = new ObservableCollection<ImageOption>();
+            ImageOptions.Add(new ImageOption() { Title = "Small", Width = 854, Height = 480, Unit = "inches" });
+            ImageOptions.Add(new ImageOption() { Title = "Medium", Width = 1366, Height = 768, Unit = "pixels" });
+            ImageOptions.Add(new ImageOption() { Title = "Large", Width = 1920, Height = 1080, Unit = "pixels" });
+
+
+        }
+
+
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            ImageOptionsComboBox.SelectionChanged += ImageOptionsComboBox_SelectionChanged;
+            ImageOptionsComboBox.SelectedIndex = 0;
+            WidthText.ValueChanged += Number_ValueChanged;
+            HeightText.ValueChanged += Number_ValueChanged;
+            StretchBox.SelectionChanged += ComboBox_SelectionChanged;
+            UnitCB.SelectionChanged += ComboBox_SelectionChanged;
+        }
+
+
+        private void ImageOptionsComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ImageOption S = ImageOptionsComboBox.SelectedItem as ImageOption;
+            if (!S.IsCustom)
+            {
+                WidthText.Text = S.Width.ToString(CultureInfo.CurrentCulture);
+                HeightText.Text = S.Height.ToString(CultureInfo.CurrentCulture);
+                SaveButton.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                SaveButton.Visibility = Visibility.Visible;
+
+            }
+        }
+
+        private void Number_ValueChanged(NumberBox sender, NumberBoxValueChangedEventArgs args)
+        {
+            ImageOption S = ImageOptionsComboBox.SelectedItem as ImageOption;
+            if (!S.IsCustom)
+            {
+                ImageOptions.Add(new ImageOption() { Title = "Custom", IsCustom = true, Width = (int)WidthText.Value, Height = (int)HeightText.Value, Unit = UnitCB.SelectionBoxItem.ToString() });
+                ImageOptionsComboBox.SelectedIndex = ImageOptionsComboBox.Items.Count - 1;
+            }
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ImageOption S = ImageOptionsComboBox.SelectedItem as ImageOption;
+            if (!S.IsCustom)
+            {
+                ImageOptions.Add(new ImageOption() { Title = "Custom", IsCustom = true, Width = (int)WidthText.Value, Height = (int)HeightText.Value, Unit = UnitCB.SelectionBoxItem.ToString() });
+                ImageOptionsComboBox.SelectedIndex = ImageOptionsComboBox.Items.Count - 1;
+            }
+        }
+
+        private async void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            await SaveDialog.ShowAsync();
+        }
+
+        private void SaveDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        {
+            SaveButton.Visibility = Visibility.Collapsed;
+            ImageOptions.Add(new ImageOption() { Title = NameBox.Text, IsCustom = false, Width = (int)WidthText.Value, Height = (int)HeightText.Value, Unit = UnitCB.SelectionBoxItem.ToString() });
+            ImageOptionsComboBox.SelectedIndex = ImageOptionsComboBox.Items.Count - 1;
+        }
+
+    }
+
+
+    public class Photo
+    {
+        public string FileName { get; set; }
+        public string Dimensions { get; set; }
+        public string OldDimensions { get; set; }
+        public string Size { get; set; }
+        public string OldSize { get; set; }
+        public string Path { get; set; }
+    }
+
+    public class ImageOption
+    {
+        public string Title { get; set; }
+        public int Width { get; set; }
+        public int Height { get; set; }
+        public string Unit { get; set; }
+        public bool IsCustom { get; set; }
+    }
+
+    public class ImageOptionTemplateSelector : DataTemplateSelector
+    {
+        public DataTemplate PresetTemplate
+        {
+            get;
+            set;
+        }
+
+        public DataTemplate CustomTemplate
+        {
+            get;
+            set;
+        }
+
+
+        protected override DataTemplate SelectTemplateCore(object item, DependencyObject container)
+        {
+            ImageOption SelectedImageOption = item as ImageOption;
+
+            if (SelectedImageOption.IsCustom)
+            {
+                return CustomTemplate;
+            }
+            else
+            {
+                return PresetTemplate;
+            }
+        }
+    }
+}
