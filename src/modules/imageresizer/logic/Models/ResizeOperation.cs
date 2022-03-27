@@ -9,14 +9,13 @@ using System.IO;
 using System.IO.Abstractions;
 using System.Linq;
 using System.Windows;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using ImageResizer.Logic.Extensions;
 using ImageResizer.Logic.Properties;
 using ImageResizer.Logic.Utilities;
 using Microsoft.VisualBasic.FileIO;
 using FileSystem = Microsoft.VisualBasic.FileIO.FileSystem;
-using Windows.Graphics.Imaging;
-using Microsoft.UI.Xaml.Media.Imaging;
-using Microsoft.UI.Xaml.Media;
 
 namespace ImageResizer.Logic.Models
 {
@@ -48,8 +47,6 @@ namespace ImageResizer.Logic.Models
             string path;
             using (var inputStream = _fileSystem.File.OpenRead(_file))
             {
-                var decoder2 = BitmapDecoder.CreateAsync(inputStream);
-
                 var decoder = BitmapDecoder.Create(
                     inputStream,
                     BitmapCreateOptions.PreservePixelFormat,

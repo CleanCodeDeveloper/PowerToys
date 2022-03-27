@@ -5,7 +5,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using Windows.Graphics.Imaging;
+using System.Windows.Media.Imaging;
 
 namespace ImageResizer.Logic.Extensions
 {

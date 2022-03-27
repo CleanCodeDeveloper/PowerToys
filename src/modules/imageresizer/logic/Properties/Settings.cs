@@ -13,6 +13,7 @@ using System.IO.Abstractions;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading;
+using System.Windows.Media.Imaging;
 using ImageResizer.Logic.Extensions;
 using ImageResizer.Logic.Models;
 
@@ -29,7 +30,7 @@ namespace ImageResizer.Logic.Properties
 
         // Used to synchronize access to the settings.json file
         private static Mutex _jsonMutex = new Mutex();
-        private static string _settingsPath = _fileSystem.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Microsoft", "PowerToys", "Image Resizer", "settings.json");
+        private static string _settingsPath = _fileSystem.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "Microsoft", "PowerToys", "Image Resizer", "settings.json");
         private string _fileNameFormat;
         private bool _shrinkOnly;
         private int _selectedSizeIndex;
@@ -41,7 +42,7 @@ namespace ImageResizer.Logic.Properties
         private TiffCompressOption _tiffCompressOption;
         private string _fileName;
         private bool _keepDateModified;
-        private Guid _fallbackEncoder;
+        private System.Guid _fallbackEncoder;
         private CustomSize _customSize;
 
         public Settings()
@@ -52,8 +53,8 @@ namespace ImageResizer.Logic.Properties
             IgnoreOrientation = true;
             RemoveMetadata = false;
             JpegQualityLevel = 90;
-            PngInterlaceOption = PngInterlaceOption.Default;
-            TiffCompressOption = TiffCompressOption.Default;
+            PngInterlaceOption = System.Windows.Media.Imaging.PngInterlaceOption.Default;
+            TiffCompressOption = System.Windows.Media.Imaging.TiffCompressOption.Default;
             FileName = "%1 (%2)";
             Sizes = new ObservableCollection<ResizeSize>
             {
@@ -63,7 +64,7 @@ namespace ImageResizer.Logic.Properties
                 new ResizeSize("$phone$", ResizeFit.Fit, 320, 568, ResizeUnit.Pixel),
             };
             KeepDateModified = false;
-            FallbackEncoder = new Guid("19e4a5aa-5662-4fc5-a0c0-1758028e1057");
+            FallbackEncoder = new System.Guid("19e4a5aa-5662-4fc5-a0c0-1758028e1057");
             CustomSize = new CustomSize(ResizeFit.Fit, 1024, 640, ResizeUnit.Pixel);
             AllSizes = new AllSizesCollection(this);
         }
@@ -353,7 +354,7 @@ namespace ImageResizer.Logic.Properties
             {
                 if (string.IsNullOrWhiteSpace(value))
                 {
-                    throw new ArgumentNullException(nameof(FileName));
+                    throw new System.ArgumentNullException(nameof(FileName));
                 }
 
                 _fileName = value;
@@ -427,8 +428,8 @@ namespace ImageResizer.Logic.Properties
 
         public void Reload()
         {
-            string oldSettingsDir = _fileSystem.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Microsoft", "PowerToys", "ImageResizer");
-            string settingsDir = _fileSystem.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Microsoft", "PowerToys", "Image Resizer");
+            string oldSettingsDir = _fileSystem.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "Microsoft", "PowerToys", "ImageResizer");
+            string settingsDir = _fileSystem.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "Microsoft", "PowerToys", "Image Resizer");
 
             if (_fileSystem.Directory.Exists(oldSettingsDir) && !_fileSystem.Directory.Exists(settingsDir))
             {
@@ -454,27 +455,27 @@ namespace ImageResizer.Logic.Properties
             }
 
             // Needs to be called on the App UI thread as the properties are bound to the UI.
-            App.Current.Dispatcher.Invoke(() =>
-            {
-                ShrinkOnly = jsonSettings.ShrinkOnly;
-                Replace = jsonSettings.Replace;
-                IgnoreOrientation = jsonSettings.IgnoreOrientation;
-                RemoveMetadata = jsonSettings.RemoveMetadata;
-                JpegQualityLevel = jsonSettings.JpegQualityLevel;
-                PngInterlaceOption = jsonSettings.PngInterlaceOption;
-                TiffCompressOption = jsonSettings.TiffCompressOption;
-                FileName = jsonSettings.FileName;
-                KeepDateModified = jsonSettings.KeepDateModified;
-                FallbackEncoder = jsonSettings.FallbackEncoder;
-                CustomSize = jsonSettings.CustomSize;
-                SelectedSizeIndex = jsonSettings.SelectedSizeIndex;
+            //App.Current.Dispatcher.Invoke(() =>
+            //{
+            //    ShrinkOnly = jsonSettings.ShrinkOnly;
+            //    Replace = jsonSettings.Replace;
+            //    IgnoreOrientation = jsonSettings.IgnoreOrientation;
+            //    RemoveMetadata = jsonSettings.RemoveMetadata;
+            //    JpegQualityLevel = jsonSettings.JpegQualityLevel;
+            //    PngInterlaceOption = jsonSettings.PngInterlaceOption;
+            //    TiffCompressOption = jsonSettings.TiffCompressOption;
+            //    FileName = jsonSettings.FileName;
+            //    KeepDateModified = jsonSettings.KeepDateModified;
+            //    FallbackEncoder = jsonSettings.FallbackEncoder;
+            //    CustomSize = jsonSettings.CustomSize;
+            //    SelectedSizeIndex = jsonSettings.SelectedSizeIndex;
 
-                if (jsonSettings.Sizes.Count > 0)
-                {
-                    Sizes.Clear();
-                    Sizes.AddRange(jsonSettings.Sizes);
-                }
-            });
+            //    if (jsonSettings.Sizes.Count > 0)
+            //    {
+            //        Sizes.Clear();
+            //        Sizes.AddRange(jsonSettings.Sizes);
+            //    }
+            //});
 
             _jsonMutex.ReleaseMutex();
         }

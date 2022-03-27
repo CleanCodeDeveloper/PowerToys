@@ -6,12 +6,10 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Windows.Input;
+using System.Windows.Media.Imaging;
 using ImageResizer.Logic.Helpers;
 using ImageResizer.Logic.Models;
 using ImageResizer.Logic.Properties;
-using Windows.Graphics.Imaging;
-using Microsoft.UI.Xaml.Media.Imaging;
-using Microsoft.UI.Xaml.Media;
 
 namespace ImageResizer.Logic.ViewModels
 {
