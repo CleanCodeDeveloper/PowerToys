@@ -5,12 +5,15 @@
     <TargetPlatformMinVersion>10.0.19041.0</TargetPlatformMinVersion>
     <RootNamespace>ImageResizer.WinUI</RootNamespace>
     <ApplicationManifest>app.manifest</ApplicationManifest>
-    <Platforms>x86;x64;arm64</Platforms>
-    <RuntimeIdentifier>win10-x64</RuntimeIdentifier>
+    <Platforms>x64</Platforms>
+    <RuntimeIdentifiers>win10-x64;</RuntimeIdentifiers>
     <PublishProfile>win10-$(Platform).pubxml</PublishProfile>
     <UseWinUI>true</UseWinUI>
     <EnablePreviewMsixTooling>true</EnablePreviewMsixTooling>
+    <WindowsPackageType>None</WindowsPackageType>
+    <NoWarn>CA1720</NoWarn>
   </PropertyGroup>
+
   <ItemGroup>
     <None Remove="Resources\ImageResizer.png" />
   </ItemGroup>

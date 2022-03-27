@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "ImageResizer.WinUI (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "ImageResizer.WinUI (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
