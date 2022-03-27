@@ -11,6 +11,10 @@
     <UseWinUI>true</UseWinUI>
     <EnablePreviewMsixTooling>true</EnablePreviewMsixTooling>
     <WindowsPackageType>None</WindowsPackageType>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <!-- CA1720: Identifiers should not contain type names -->
     <NoWarn>CA1720</NoWarn>
   </PropertyGroup>
 
