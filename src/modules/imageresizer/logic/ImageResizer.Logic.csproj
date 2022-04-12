@@ -9,15 +9,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.ProjectReunion" Version="0.8.7-preview1" />
-    <PackageReference Include="Microsoft.ProjectReunion.Foundation" Version="0.8.7-preview1" />
-    <PackageReference Include="Microsoft.ProjectReunion.WinUI" Version="0.8.7-preview1" />
+    <PackageReference Include="Microsoft.ProjectReunion" Version="0.8.7" />
+    <PackageReference Include="Microsoft.ProjectReunion.Foundation" Version="0.8.7" />
+    <PackageReference Include="Microsoft.ProjectReunion.WinUI" Version="0.8.7" />
     <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="6.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="System.IO.Abstractions">
-      <Version>12.2.5</Version>
+      <Version>16.1.25</Version>
     </PackageReference>
     <PackageReference Include="System.Text.Json" Version="6.0.2" />
   </ItemGroup>
