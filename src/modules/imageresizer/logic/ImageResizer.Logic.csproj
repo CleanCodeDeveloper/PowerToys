@@ -5,7 +5,9 @@
     <RootNamespace>ImageResizer.Logic</RootNamespace>
     <RuntimeIdentifiers>win10-x64;</RuntimeIdentifiers>
     <Platforms>x64</Platforms>
-    <UseWinUI>true</UseWinUI>
+    <!--<UseWinUI>true</UseWinUI>-->
+    <EnableDefaultPageItems>false</EnableDefaultPageItems>
+    <WindowsSdkPackageVersion>10.0.22593-preview</WindowsSdkPackageVersion>
   </PropertyGroup>
 
   <ItemGroup>
