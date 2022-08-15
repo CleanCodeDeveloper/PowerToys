@@ -46,7 +46,7 @@
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Grid.Column="2" Margin="6,-2,0,0" >
                     <TextBlock x:Uid="TxtBlock_Original" FontWeight="Medium" />
                     <TextBlock FontWeight="Medium" Margin="4,0,0,0" >
-                        <Run Text="(" /><Run Text="{x:Bind UIUpdatesItem.OriginalCount, Mode=OneWay}" /><Run Text=")" />
+                        <Run Text="(" /><Run Text="{x:Bind OriginalCount, Mode=OneWay}" /><Run Text=")" />
                     </TextBlock>
                 </StackPanel>
             </StackPanel>
@@ -55,7 +55,7 @@
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Grid.Column="2" Margin="4,-2,0,0" >
                 <TextBlock x:Uid="TxtBlock_Renamed" FontWeight="Medium" />
                 <TextBlock FontWeight="Medium" Margin="4,0,0,0" >
-                        <Run Text="(" /><Run Text="{x:Bind UIUpdatesItem.RenamedCount, Mode=OneWay}" /><Run Text=")" />
+                        <Run Text="(" /><Run Text="{x:Bind RenamedCount, Mode=OneWay}" /><Run Text=")" />
                 </TextBlock>
             </StackPanel>
 
@@ -121,9 +121,7 @@
                                               Height="28"
                                           Grid.Column="1"
                                           XYFocusKeyboardNavigation="Enabled"
-                                          Checked="Checked_ids"
                                           IsTabStop="True"
-                                          Unchecked="Checked_ids"
                                           Content=""
                                           Name="{x:Bind IdStr}"
                                           AutomationProperties.Name="{x:Bind Original}"
@@ -189,7 +187,7 @@
                                         <RowDefinition Height="48" />
                                     </Grid.RowDefinitions>
                                     <TextBlock x:Uid="RegExCheatSheet_Title" FontWeight="SemiBold" />
-                                    <ListView ItemsSource="{x:Bind SearchRegExShortcuts}" Grid.Row="1" IsItemClickEnabled="True" Margin="-4,12,0,0" ItemClick="RegExItemClick">
+                                    <ListView ItemsSource="{x:Bind SearchRegExShortcuts}" SelectionMode="None" Grid.Row="1" IsItemClickEnabled="True" Margin="-4,12,0,0" ItemClick="RegExItemClick">
                                         <ListView.ItemTemplate>
                                             <DataTemplate x:DataType="local:PatternSnippet">
                                                 <Grid ColumnSpacing="8" Margin="-10,0,0,0">
@@ -248,7 +246,7 @@
                                         <RowDefinition Height="*" />
                                     </Grid.RowDefinitions>
                                     <TextBlock x:Uid="DateTimeCheatSheet_Title" FontWeight="SemiBold" />
-                                    <ListView ItemsSource="{x:Bind DateTimeShortcuts}" Grid.Row="1" IsItemClickEnabled="True" Margin="-4,12,0,0" ItemClick="DateTimeItemClick">
+                                    <ListView ItemsSource="{x:Bind DateTimeShortcuts}" SelectionMode="None" Grid.Row="1" IsItemClickEnabled="True" Margin="-4,12,0,0" ItemClick="DateTimeItemClick">
                                         <ListView.ItemTemplate>
                                             <DataTemplate x:DataType="local:PatternSnippet">
                                                 <Grid ColumnSpacing="8" Margin="-10,0,0,0">
@@ -330,7 +328,7 @@
                 </Button.Content>
             </Button>
 
-            <Button x:Name="button_docs" Content="&#xE11B;" FontFamily="{ThemeResource SymbolThemeFontFamily}" x:Uid="DocsButton" Background="Transparent" BorderBrush="Transparent" Grid.Row="1" Height="32" VerticalAlignment="Bottom" HorizontalAlignment="Left" Click="OpenDocs" />
+            <Button x:Name="button_docs" Content="&#xE897;" FontFamily="{ThemeResource SymbolThemeFontFamily}" x:Uid="DocsButton" Background="Transparent" BorderBrush="Transparent" Grid.Row="1" Height="32" VerticalAlignment="Bottom" HorizontalAlignment="Left" Click="OpenDocs" />
 
 
             <!--<Button Content="&#xE728;"
@@ -355,14 +353,14 @@
 
 
 
-        <muxc:SplitButton Grid.Row="2" Style="{StaticResource SplitAccentButtonStyle}" Grid.Column="0" Margin="0,0,12,1" x:Name="button_rename" x:Uid="ButtonApply" Click="button_rename_Click" HorizontalAlignment="Right" VerticalAlignment="Bottom" IsEnabled="{x:Bind UIUpdatesItem.ButtonRenameEnabled, Mode=OneWay}">
+        <muxc:SplitButton Grid.Row="2" Style="{StaticResource SplitAccentButtonStyle}" Grid.Column="0" Margin="0,0,12,1" x:Name="button_rename" x:Uid="ButtonApply" Click="button_rename_Click" HorizontalAlignment="Right" VerticalAlignment="Bottom">
             <muxc:SplitButton.KeyboardAccelerators>
                 <KeyboardAccelerator Key="Enter" />
                 <KeyboardAccelerator Key="Enter" Modifiers="Control" />
             </muxc:SplitButton.KeyboardAccelerators>
             <muxc:SplitButton.Content>
                 <StackPanel Orientation="Horizontal">
-                    <FontIcon Glyph="&#xE13E;" FontSize="14" VerticalAlignment="Center" Margin="0,2,10,0" />
+                    <FontIcon Glyph="&#xE8AC;" FontSize="14" VerticalAlignment="Center" Margin="0,2,10,0" />
                     <TextBlock x:Uid="TxtBlock_ButtonApply" />
                 </StackPanel>
             </muxc:SplitButton.Content>

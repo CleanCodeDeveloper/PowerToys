@@ -36,9 +36,6 @@
     <ClCompile Include="FancyZonesSettings.Spec.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="FancyZones.Spec.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="WorkArea.Spec.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -55,6 +52,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="AppliedLayoutsTests.Spec.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WorkAreaIdTests.Spec.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
